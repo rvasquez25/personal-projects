@@ -1,0 +1,11 @@
+Rosendo Vasquez
+Software Vulnerabilities
+Professor Acosta
+02/02/2022
+
+Exercise 1 Write-up
+The purpose of this exercise was to learn how to utilize Wireshark and Volatility to find a RAT in a frozen image that was provided to us. 
+I did struggle at first to find the active and console processes but once I got past that, I was able to successfully complete the exercise. 
+I did learn how to utilize Wireshark better to find destination ports and transport protocols of packets captured to isolate where the malware 
+RAT packets encoded data. I also got a better understanding of Volatility to find processes that were executed on the frozen image and get in 
+depth information on the DLLs, network info, and files that were used.
