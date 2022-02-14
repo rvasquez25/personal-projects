@@ -63,7 +63,7 @@ public class dictionaryAttack {
             usernameHashCmp.put(UsernameArray[i], hashArray[i]);
         }
         //Menu to compute hashes by hand
-        /*String theString, salt, theStringSalted;
+        String theString, salt, theStringSalted;
         int initialStartup = menu();
         while (initialStartup != 3) {
             switch (initialStartup){
@@ -77,39 +77,35 @@ public class dictionaryAttack {
                     else
                         theStringSalted = theString + salt;
                     System.out.println(theStringSalted + ": " + computeSha1(theStringSalted));
+                    System.out.println(theStringSalted + ": " + computeSha256(theStringSalted));
                     break;
                 case 2:
-                    System.out.print("Word to hash: ");
-                    theString = keyboard.next();
-                    System.out.print("Salt: ");
-                    salt = keyboard.next();
-                    if (salt.equals("null"))
-                        theStringSalted = theString;
-                    else
-                        theStringSalted = theString + salt;
-                    System.out.println(theStringSalted + ": " + computeSha256(theStringSalted));
+                    long startTime = System.nanoTime();
+                    while (wordsEn.hasNextLine()) {
+                        String data = wordsEn.nextLine();
+                        for (int i = 0; i < saltArray.length; i++){
+                            String saltedWord;
+                            saltedWord = data + saltArray[i];
+
+                            String hash = computeSha1(computeSha256(saltedWord));
+                            for (int j = 0; j < 10; j++) {
+                                if (hash.equals(usernameHashCmp.get(UsernameArray[j]))) {
+                                    System.out.println("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i]);
+                                    myWriter.write("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i] + "\n");
+                                }
+                            }
+                        }
+                    }
+                    long endTime = System.nanoTime();
+                    System.out.println("Time taken: " + (endTime - startTime));
+                    myWriter.write("Time Taken: " + (endTime - startTime) + "\n");
                     break;
                 case 3:
                     break;
             }
             initialStartup = menu();
-        }*/
-
-        while (wordsEn.hasNextLine()) {
-            String data = wordsEn.nextLine();
-            for (int i = 0; i < saltArray.length; i++){
-                String saltedWord;
-                saltedWord = data + saltArray[i];
-
-                String hash = computeSha1(computeSha256(saltedWord));
-                for (int j = 0; j < 10; j++) {
-                    if (hash.equals(usernameHashCmp.get(UsernameArray[j]))) {
-                        System.out.println("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i]);
-                        myWriter.write("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i] + "\n");
-                    }
-                }
-            }
         }
+
         wordsEn.close();
         keyboard.close();
         myWriter.close();
@@ -149,9 +145,10 @@ public class dictionaryAttack {
     public static int menu() {
         Scanner menuMethod = new Scanner(System.in);
 
+	    System.out.println("*******************************************************************");
         System.out.println("What would you like to do?(Select number option");
-        System.out.println("\t1) Compute SHA-1");
-        System.out.println("\t2) Compute SHA-256");
+        System.out.println("\t1) Compute Hash");
+        System.out.println("\t2) Dictionary attack against Manually input hashes");
         System.out.println("\t3) Exit");
         System.out.print("Choice: ");
 
