@@ -32,16 +32,16 @@ public class randomAttack {
         UsernameArray[9] = "daniela53_uLQ";
 
         //Hashes to crack
-        hashArray[0] = "67b8b1c4fedb2e38e2eb26f403b9c2b2642b0a2c";
-        hashArray[1] = "164c4a27d71c04134780d4cd2d452b4e9e4ddc96";
-        hashArray[2] = "70f886994ab6ba3a571cc5197a55cb8b9b3871e4";
-        hashArray[3] = "3d30c0b998bb546319b798481f6d1aa50dab1efa";
-        hashArray[4] = "d35dcf62de03fb40d204c9a625df8775526631d0";
-        hashArray[5] = "70350577aa1fb41e815d97aa1886948ceba1151e";
-        hashArray[6] = "ff07bc97297179270a9cc77d038f108889b75c91";
-        hashArray[7] = "c032adc1ff629c9b66f22749ad667e6beadf144b";
-        hashArray[8] = "6c923d68e1511e74010d5c938317fe41cdcb36b8";
-        hashArray[9] = "e253fed7333166df4dbc55c827119a1016cc9416";
+        hashArray[0] = "90474ecb9bed79aca90ef0eff1a6340c04676a84";
+        hashArray[1] = "55f8e92d4f10dc2329edc2ae73a7f6e7b379d1db";
+        hashArray[2] = "8e3ca8457bfd2ee71ecb1d193eacb09be4307aef";
+        hashArray[3] = "28affafbef25790f9186618098d0f9cd24228e7d";
+        hashArray[4] = "df12986576a948b1344a0b51c6d58855c17eac2f";
+        hashArray[5] = "a8c3a8a3886ff41eeb06fd9860ad7b951a35ce9c";
+        hashArray[6] = "f8606ee31fb678af11286b8d261c39246e09da8c";
+        hashArray[7] = "aeab2c18c4800ace39781e086b4404528dfe3757";
+        hashArray[8] = "3d92b644c0e267663b7d2bab4bd4cb05f03fd0d4";
+        hashArray[9] = "e339bbe7bd5940f3608f03ef3e8ff1c5ae5956d7";
 
         for (int i = 0; i < 10; i++) {
             usernameHashCmp.put(UsernameArray[i], hashArray[i]);
@@ -56,324 +56,140 @@ public class randomAttack {
             'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '_', '-'};
         //Menu to compute hashes by hand
-        /*String theString, salt, theStringSalted;
+        String theString, salt, theStringSalted;
         int initialStartup = menu();
         while (initialStartup != 3) {
             switch (initialStartup){
                 case 1: 
                     System.out.print("Word to hash: ");
                     theString = keyboard.next();
-                    System.out.print("Salt: ");
+                    System.out.print("Salt(or null): ");
                     salt = keyboard.next();
                     if (salt.equals("null"))
                         theStringSalted = theString;
                     else
                         theStringSalted = theString + salt;
-                    System.out.println(theStringSalted + ": " + computeSha1(theStringSalted));
+                    System.out.println("Sha-1:    " + computeSha1(theStringSalted));
+                    System.out.println("Sha-256:  " + computeSha256(theStringSalted));
                     break;
                 case 2:
-                    System.out.print("Word to hash: ");
-                    theString = keyboard.next();
-                    System.out.print("Salt: ");
-                    salt = keyboard.next();
-                    if (salt.equals("null"))
-                        theStringSalted = theString;
-                    else
-                        theStringSalted = theString + salt;
-                    System.out.println(theStringSalted + ": " + computeSha256(theStringSalted));
-                    break;
-                case 3:
-                    break;
-            }
-            initialStartup = menu();
-        }*/
-        int brute;
-        System.out.print("Up to what length would you like to brute force? (1-10): ");
-        brute = numbers.nextInt();
-        switch (brute) {
-            case 1:
-                for (int i = 0; i < allowed.length; i++) {
-                    combo = String.valueOf(allowed[i]);
-                    hash = computeSha1(combo);
-                    for (int a = 0; a < hashArray.length; a++) {
-                        if (hash.equals(hashArray[a])) {
-                            myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                            System.out.println("hash: " + hash + " pwd: " + combo);
-                        } 
-                    }
-                }
-                break;
-            case 2:
-                for (int i = 0; i < allowed.length; i++) {
-                    combo = String.valueOf(allowed[i]);
-                    hash = computeSha1(combo);
-                    for (int a = 0; a < hashArray.length; a++) {
-                        if (hash.equals(hashArray[a])) {
-                            myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                            System.out.println("hash: " + hash + " pwd: " + combo);
-                        } 
-                    }
-                    for (int k = 0; k < allowed.length; k++) {
-                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                        hash = computeSha1(combo);
-                        for (int b = 0; b < hashArray.length; b++) {
-                            if (hash.equals(hashArray[b])) {
-                                myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            }
-                        }
-                    }
-                }
-                break;
-                case 3:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
+                    int brute;
+                    System.out.print("Up to what length would you like to brute force? (1-10): ");
+                    brute = numbers.nextInt();
+                    switch (brute) {
+                        case 1:
+                            long startTime = System.nanoTime();
+                            for (int i = 0; i < allowed.length; i++) {
+                                combo = String.valueOf(allowed[i]);
+                                hash = computeSha1(computeSha256(combo));
+                                for (int a = 0; a < hashArray.length; a++) {
+                                    if (hash.equals(hashArray[a])) {
+                                        myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                         System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
+                                    } 
                                 }
                             }
-                        }
-                    }
-                    break;
-                case 4:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
+                            long endTime = System.nanoTime();
+                            System.out.println("Time taken: " + (endTime - startTime));
+                            myWriter.write("Time taken: " + (endTime + startTime) + "\n");
+                            break;
+                        case 2:
+                            long startTime1 = System.nanoTime();
+                            for (int i = 0; i < allowed.length; i++) {
+                                combo = String.valueOf(allowed[i]);
+                                hash = computeSha1(computeSha256(combo));
+                                for (int a = 0; a < hashArray.length; a++) {
+                                    if (hash.equals(hashArray[a])) {
+                                        myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                         System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
+                                    } 
                                 }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                                for (int k = 0; k < allowed.length; k++) {
+                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int b = 0; b < hashArray.length; b++) {
+                                        if (hash.equals(hashArray[b])) {
+                                            myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
                                         }
                                     }
                                 }
                             }
-                        }
-                    }
-                    break;
-                case 5:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                            long endTime1 = System.nanoTime();
+                            System.out.println("Time taken: " + (endTime1 - startTime1));
+                            myWriter.write("Time taken: " + (endTime1 + startTime1) + "\n");
+                            break;
+                            case 3:
+                                long startTime2 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
+                                        } 
                                     }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                             }
                                         }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case 6:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
-                                            System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
-                                    }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
-                                                System.out.println("hash: " + hash + " pwd: " + combo);
-                                            }
-                                        }
-                                        for (int o = 0; o < allowed.length; o++) {
-                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
-                                            hash = computeSha1(combo);
-                                            for (int f = 0; f < hashArray.length; f++) {
-                                                if (hash.equals(hashArray[f])) {
-                                                    myWriter.write(" hash: " + hashArray[f] + "password: " + combo + "\n");
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                 }
                                             }
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                    break;
-                case 7:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                                long endTime2 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime2 - startTime2));
+                                myWriter.write("Time taken: " + (endTime2 + startTime2) + "\n");
+                                break;
+                            case 4:
+                                long startTime3 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
+                                        } 
                                     }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                             }
                                         }
-                                        for (int o = 0; o < allowed.length; o++) {
-                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
-                                            hash = computeSha1(combo);
-                                            for (int f = 0; f < hashArray.length; f++) {
-                                                if (hash.equals(hashArray[f])) {
-                                                    myWriter.write(" hash: " + hashArray[f] + "password: " + combo + "\n");
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                 }
                                             }
-                                            for (int p = 0; p < allowed.length; p++) {
-                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
-                                                hash = computeSha1(combo);
-                                                for (int g = 0; g < hashArray.length; g++) {
-                                                    if (hash.equals(hashArray[g])) {
-                                                        myWriter.write(" hash: " + hashArray[g] + "password: " + combo + "\n");
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
                                                         System.out.println("hash: " + hash + " pwd: " + combo);
                                                     }
                                                 }
@@ -381,80 +197,54 @@ public class randomAttack {
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                    break;
-                case 8:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                                long endTime3 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime3 - startTime3));
+                                myWriter.write("Time taken: " + (endTime3 + startTime3) + "\n");
+                                break;
+                            case 5:
+                                long startTime4 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
+                                        } 
                                     }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                             }
                                         }
-                                        for (int o = 0; o < allowed.length; o++) {
-                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
-                                            hash = computeSha1(combo);
-                                            for (int f = 0; f < hashArray.length; f++) {
-                                                if (hash.equals(hashArray[f])) {
-                                                    myWriter.write(" hash: " + hashArray[f] + "password: " + combo + "\n");
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                 }
                                             }
-                                            for (int p = 0; p < allowed.length; p++) {
-                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
-                                                hash = computeSha1(combo);
-                                                for (int g = 0; g < hashArray.length; g++) {
-                                                    if (hash.equals(hashArray[g])) {
-                                                        myWriter.write(" hash: " + hashArray[g] + "password: " + combo + "\n");
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
                                                         System.out.println("hash: " + hash + " pwd: " + combo);
                                                     }
                                                 }
-                                                for (int q = 0; q < allowed.length; q++) {
-                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
-                                                    hash = computeSha1(combo);
-                                                    for (int h = 0; h < hashArray.length; h++) {
-                                                        if (hash.equals(hashArray[h])) {
-                                                            myWriter.write(" hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
                                                             System.out.println("hash: " + hash + " pwd: " + combo);
                                                         }
                                                     }
@@ -463,89 +253,63 @@ public class randomAttack {
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                    break;
-                case 9:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                                long endTime4 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime4 - startTime4));
+                                myWriter.write("Time taken: " + (endTime4 + startTime4) + "\n");
+                                break;
+                            case 6:
+                                long startTime5 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
+                                        } 
                                     }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                             }
                                         }
-                                        for (int o = 0; o < allowed.length; o++) {
-                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
-                                            hash = computeSha1(combo);
-                                            for (int f = 0; f < hashArray.length; f++) {
-                                                if (hash.equals(hashArray[f])) {
-                                                    myWriter.write(" hash: " + hashArray[f] + "password: " + combo + "\n");
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                 }
                                             }
-                                            for (int p = 0; p < allowed.length; p++) {
-                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
-                                                hash = computeSha1(combo);
-                                                for (int g = 0; g < hashArray.length; g++) {
-                                                    if (hash.equals(hashArray[g])) {
-                                                        myWriter.write(" hash: " + hashArray[g] + "password: " + combo + "\n");
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
                                                         System.out.println("hash: " + hash + " pwd: " + combo);
                                                     }
                                                 }
-                                                for (int q = 0; q < allowed.length; q++) {
-                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
-                                                    hash = computeSha1(combo);
-                                                    for (int h = 0; h < hashArray.length; h++) {
-                                                        if (hash.equals(hashArray[h])) {
-                                                            myWriter.write(" hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
                                                             System.out.println("hash: " + hash + " pwd: " + combo);
                                                         }
                                                     }
-                                                    for (int r = 0; r < allowed.length; r++) {
-                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]);
-                                                        hash = computeSha1(combo);
-                                                        for (int t = 0; t < hashArray.length; t++) {
-                                                            if (hash.equals(hashArray[t])) {
-                                                                myWriter.write(" hash: " + hashArray[t] + "password: " + combo + "\n");
+                                                    for (int o = 0; o < allowed.length; o++) {
+                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
+                                                        hash = computeSha1(computeSha256(combo));
+                                                        for (int f = 0; f < hashArray.length; f++) {
+                                                            if (hash.equals(hashArray[f])) {
+                                                                myWriter.write("hash: " + hashArray[f] + "password: " + combo + "\n");
                                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                                             }
                                                         }
@@ -555,98 +319,72 @@ public class randomAttack {
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                    break;
-                case 10:
-                    for (int i = 0; i < allowed.length; i++) {
-                        combo = String.valueOf(allowed[i]);
-                        hash = computeSha1(combo);
-                        for (int a = 0; a < hashArray.length; a++) {
-                            if (hash.equals(hashArray[a])) {
-                                myWriter.write(" hash: " + hashArray[a] + "password: " + combo + "\n");
-                                System.out.println("hash: " + hash + " pwd: " + combo);
-                            } 
-                        }
-                        for (int k = 0; k < allowed.length; k++) {
-                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
-                            hash = computeSha1(combo);
-                            for (int b = 0; b < hashArray.length; b++) {
-                                if (hash.equals(hashArray[b])) {
-                                    myWriter.write(" hash: " + hashArray[b] + "password: " + combo + "\n");
-                                    System.out.println("hash: " + hash + " pwd: " + combo);
-                                }
-                            }
-                            for (int l = 0; l < allowed.length; l++) {
-                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
-                                hash = computeSha1(combo);
-                                for (int c = 0; c < hashArray.length; c++) {
-                                    if (hash.equals(hashArray[c])) {
-                                        myWriter.write(" hash: " + hashArray[c] + "password: " + combo + "\n");
-                                        System.out.println("hash: " + hash + " pwd: " + combo);
-                                    }
-                                }
-                                for (int m = 0; m < allowed.length; m++) {
-                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
-                                    hash = computeSha1(combo);
-                                    for (int d = 0; d < hashArray.length; d++) {
-                                        if (hash.equals(hashArray[d])) {
-                                            myWriter.write(" hash: " + hashArray[d] + "password: " + combo + "\n");
+                                long endTime5 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime5 - startTime5));
+                                myWriter.write("Time taken: " + (endTime5 + startTime5) + "\n");
+                                break;
+                            case 7:
+                                long startTime6 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
                                             System.out.println("hash: " + hash + " pwd: " + combo);
-                                        }
+                                        } 
                                     }
-                                    for (int n = 0; n < allowed.length; n++) {
-                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
-                                        hash = computeSha1(combo);
-                                        for (int e = 0; e < hashArray.length; e++) {
-                                            if (hash.equals(hashArray[e])) {
-                                                myWriter.write(" hash: " + hashArray[e] + "password: " + combo + "\n");
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                             }
                                         }
-                                        for (int o = 0; o < allowed.length; o++) {
-                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
-                                            hash = computeSha1(combo);
-                                            for (int f = 0; f < hashArray.length; f++) {
-                                                if (hash.equals(hashArray[f])) {
-                                                    myWriter.write(" hash: " + hashArray[f] + "password: " + combo + "\n");
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                 }
                                             }
-                                            for (int p = 0; p < allowed.length; p++) {
-                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
-                                                hash = computeSha1(combo);
-                                                for (int g = 0; g < hashArray.length; g++) {
-                                                    if (hash.equals(hashArray[g])) {
-                                                        myWriter.write(" hash: " + hashArray[g] + "password: " + combo + "\n");
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
                                                         System.out.println("hash: " + hash + " pwd: " + combo);
                                                     }
                                                 }
-                                                for (int q = 0; q < allowed.length; q++) {
-                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
-                                                    hash = computeSha1(combo);
-                                                    for (int h = 0; h < hashArray.length; h++) {
-                                                        if (hash.equals(hashArray[h])) {
-                                                            myWriter.write(" hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
                                                             System.out.println("hash: " + hash + " pwd: " + combo);
                                                         }
                                                     }
-                                                    for (int r = 0; r < allowed.length; r++) {
-                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]);
-                                                        hash = computeSha1(combo);
-                                                        for (int t = 0; t < hashArray.length; t++) {
-                                                            if (hash.equals(hashArray[t])) {
-                                                                myWriter.write(" hash: " + hashArray[t] + "password: " + combo + "\n");
+                                                    for (int o = 0; o < allowed.length; o++) {
+                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
+                                                        hash = computeSha1(computeSha256(combo));
+                                                        for (int f = 0; f < hashArray.length; f++) {
+                                                            if (hash.equals(hashArray[f])) {
+                                                                myWriter.write("hash: " + hashArray[f] + "password: " + combo + "\n");
                                                                 System.out.println("hash: " + hash + " pwd: " + combo);
                                                             }
                                                         }
-                                                        for (int s = 0; s < allowed.length; s++) {
-                                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]) + String.valueOf(allowed[s]);
-                                                            hash = computeSha1(combo);
-                                                            for (int u = 0; u < hashArray.length; u++) {
-                                                                if (hash.equals(hashArray[u])) {
-                                                                    myWriter.write(" hash: " + hashArray[u] + "password: " + combo + "\n");
+                                                        for (int p = 0; p < allowed.length; p++) {
+                                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
+                                                            hash = computeSha1(computeSha256(combo));
+                                                            for (int g = 0; g < hashArray.length; g++) {
+                                                                if (hash.equals(hashArray[g])) {
+                                                                    myWriter.write("hash: " + hashArray[g] + "password: " + combo + "\n");
                                                                     System.out.println("hash: " + hash + " pwd: " + combo);
                                                                 }
                                                             }
@@ -657,14 +395,309 @@ public class randomAttack {
                                         }
                                     }
                                 }
-                            }
-                        }
-                    }
-                    break;
+                                long endTime6 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime6 - startTime6));
+                                myWriter.write("Time taken: " + (endTime6 + startTime6) + "\n");
+                                break;
+                            case 8:
+                                long startTime7 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
+                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                        } 
+                                    }
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
+                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                            }
+                                        }
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
+                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                }
+                                            }
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
+                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                    }
+                                                }
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
+                                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                                        }
+                                                    }
+                                                    for (int o = 0; o < allowed.length; o++) {
+                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
+                                                        hash = computeSha1(computeSha256(combo));
+                                                        for (int f = 0; f < hashArray.length; f++) {
+                                                            if (hash.equals(hashArray[f])) {
+                                                                myWriter.write("hash: " + hashArray[f] + "password: " + combo + "\n");
+                                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                                            }
+                                                        }
+                                                        for (int p = 0; p < allowed.length; p++) {
+                                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
+                                                            hash = computeSha1(computeSha256(combo));
+                                                            for (int g = 0; g < hashArray.length; g++) {
+                                                                if (hash.equals(hashArray[g])) {
+                                                                    myWriter.write("hash: " + hashArray[g] + "password: " + combo + "\n");
+                                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                }
+                                                            }
+                                                            for (int q = 0; q < allowed.length; q++) {
+                                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
+                                                                hash = computeSha1(computeSha256(combo));
+                                                                for (int h = 0; h < hashArray.length; h++) {
+                                                                    if (hash.equals(hashArray[h])) {
+                                                                        myWriter.write("hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                long endTime7 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime7 - startTime7));
+                                myWriter.write("Time taken: " + (endTime7 + startTime7) + "\n");
+                                break;
+                            case 9:
+                                long startTime8 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
+                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                        } 
+                                    }
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
+                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                            }
+                                        }
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
+                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                }
+                                            }
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
+                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                    }
+                                                }
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
+                                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                                        }
+                                                    }
+                                                    for (int o = 0; o < allowed.length; o++) {
+                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
+                                                        hash = computeSha1(computeSha256(combo));
+                                                        for (int f = 0; f < hashArray.length; f++) {
+                                                            if (hash.equals(hashArray[f])) {
+                                                                myWriter.write("hash: " + hashArray[f] + "password: " + combo + "\n");
+                                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                                            }
+                                                        }
+                                                        for (int p = 0; p < allowed.length; p++) {
+                                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
+                                                            hash = computeSha1(computeSha256(combo));
+                                                            for (int g = 0; g < hashArray.length; g++) {
+                                                                if (hash.equals(hashArray[g])) {
+                                                                    myWriter.write("hash: " + hashArray[g] + "password: " + combo + "\n");
+                                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                }
+                                                            }
+                                                            for (int q = 0; q < allowed.length; q++) {
+                                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
+                                                                hash = computeSha1(computeSha256(combo));
+                                                                for (int h = 0; h < hashArray.length; h++) {
+                                                                    if (hash.equals(hashArray[h])) {
+                                                                        myWriter.write("hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                    }
+                                                                }
+                                                                for (int r = 0; r < allowed.length; r++) {
+                                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]);
+                                                                    hash = computeSha1(computeSha256(combo));
+                                                                    for (int t = 0; t < hashArray.length; t++) {
+                                                                        if (hash.equals(hashArray[t])) {
+                                                                            myWriter.write("hash: " + hashArray[t] + "password: " + combo + "\n");
+                                                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                long endTime8 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime8 - startTime8));
+                                myWriter.write("Time taken: " + (endTime8 + startTime8) + "\n");
+                                break;
+                            case 10:
+                                long startTime9 = System.nanoTime();
+                                for (int i = 0; i < allowed.length; i++) {
+                                    combo = String.valueOf(allowed[i]);
+                                    hash = computeSha1(computeSha256(combo));
+                                    for (int a = 0; a < hashArray.length; a++) {
+                                        if (hash.equals(hashArray[a])) {
+                                            myWriter.write("hash: " + hashArray[a] + "password: " + combo + "\n");
+                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                        } 
+                                    }
+                                    for (int k = 0; k < allowed.length; k++) {
+                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]);
+                                        hash = computeSha1(computeSha256(combo));
+                                        for (int b = 0; b < hashArray.length; b++) {
+                                            if (hash.equals(hashArray[b])) {
+                                                myWriter.write("hash: " + hashArray[b] + "password: " + combo + "\n");
+                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                            }
+                                        }
+                                        for (int l = 0; l < allowed.length; l++) {
+                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]);
+                                            hash = computeSha1(computeSha256(combo));
+                                            for (int c = 0; c < hashArray.length; c++) {
+                                                if (hash.equals(hashArray[c])) {
+                                                    myWriter.write("hash: " + hashArray[c] + "password: " + combo + "\n");
+                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                }
+                                            }
+                                            for (int m = 0; m < allowed.length; m++) {
+                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]);
+                                                hash = computeSha1(computeSha256(combo));
+                                                for (int d = 0; d < hashArray.length; d++) {
+                                                    if (hash.equals(hashArray[d])) {
+                                                        myWriter.write("hash: " + hashArray[d] + "password: " + combo + "\n");
+                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                    }
+                                                }
+                                                for (int n = 0; n < allowed.length; n++) {
+                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]);
+                                                    hash = computeSha1(computeSha256(combo));
+                                                    for (int e = 0; e < hashArray.length; e++) {
+                                                        if (hash.equals(hashArray[e])) {
+                                                            myWriter.write("hash: " + hashArray[e] + "password: " + combo + "\n");
+                                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                                        }
+                                                    }
+                                                    for (int o = 0; o < allowed.length; o++) {
+                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]);
+                                                        hash = computeSha1(computeSha256(combo));
+                                                        for (int f = 0; f < hashArray.length; f++) {
+                                                            if (hash.equals(hashArray[f])) {
+                                                                myWriter.write("hash: " + hashArray[f] + "password: " + combo + "\n");
+                                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                                            }
+                                                        }
+                                                        for (int p = 0; p < allowed.length; p++) {
+                                                            combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]);
+                                                            hash = computeSha1(computeSha256(combo));
+                                                            for (int g = 0; g < hashArray.length; g++) {
+                                                                if (hash.equals(hashArray[g])) {
+                                                                    myWriter.write("hash: " + hashArray[g] + "password: " + combo + "\n");
+                                                                    System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                }
+                                                            }
+                                                            for (int q = 0; q < allowed.length; q++) {
+                                                                combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]);
+                                                                hash = computeSha1(computeSha256(combo));
+                                                                for (int h = 0; h < hashArray.length; h++) {
+                                                                    if (hash.equals(hashArray[h])) {
+                                                                        myWriter.write("hash: " + hashArray[h] + "password: " + combo + "\n");
+                                                                        System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                    }
+                                                                }
+                                                                for (int r = 0; r < allowed.length; r++) {
+                                                                    combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]);
+                                                                    hash = computeSha1(computeSha256(combo));
+                                                                    for (int t = 0; t < hashArray.length; t++) {
+                                                                        if (hash.equals(hashArray[t])) {
+                                                                            myWriter.write("hash: " + hashArray[t] + "password: " + combo + "\n");
+                                                                            System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                        }
+                                                                    }
+                                                                    for (int s = 0; s < allowed.length; s++) {
+                                                                        combo = String.valueOf(allowed[i]) + String.valueOf(allowed[k]) + String.valueOf(allowed[l]) + String.valueOf(allowed[m]) + String.valueOf(allowed[n]) + String.valueOf(allowed[o]) + String.valueOf(allowed[p]) + String.valueOf(allowed[q]) + String.valueOf(allowed[r]) + String.valueOf(allowed[s]);
+                                                                        hash = computeSha1(computeSha256(combo));
+                                                                        for (int u = 0; u < hashArray.length; u++) {
+                                                                            if (hash.equals(hashArray[u])) {
+                                                                                myWriter.write("hash: " + hashArray[u] + "password: " + combo + "\n");
+                                                                                System.out.println("hash: " + hash + " pwd: " + combo);
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                long endTime9 = System.nanoTime();
+                                System.out.println("Time taken: " + (endTime9 - startTime9));
+                                myWriter.write("Time taken: " + (endTime9 + startTime9) + "\n");
+                                break;
                 default:
                     System.out.println("Wrong input");
                     break;
         }
+                    break;
+                case 4:
+                    break;
+            }
+            initialStartup = menu();
+        }
+        
         keyboard.close();
         myWriter.close();
         numbers.close();
@@ -704,9 +737,10 @@ public class randomAttack {
     public static int menu() {
         Scanner menuMethod = new Scanner(System.in);
 
-        System.out.println("What would you like to do?(Select number option");
-        System.out.println("\t1) Compute SHA-1");
-        System.out.println("\t2) Compute SHA-256");
+        System.out.println("***************************************************************************");
+        System.out.println("What would you like to do?(Select number option)");
+        System.out.println("\t1) Compute Hash");
+        System.out.println("\t2) Random Attack (brute force) against Manually Inputted Hashes");
         System.out.println("\t3) Exit");
         System.out.print("Choice: ");
 
