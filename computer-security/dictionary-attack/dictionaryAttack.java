@@ -76,29 +76,28 @@ public class dictionaryAttack {
                         theStringSalted = theString;
                     else
                         theStringSalted = theString + salt;
-                    System.out.println(theStringSalted + ": " + computeSha1(theStringSalted));
-                    System.out.println(theStringSalted + ": " + computeSha256(theStringSalted));
+                    System.out.println("Sha-1:   " + computeSha1(theStringSalted));
+                    System.out.println("Sha-256: " + computeSha256(theStringSalted));
                     break;
                 case 2:
                     long startTime = System.nanoTime();
                     while (wordsEn.hasNextLine()) {
                         String data = wordsEn.nextLine();
-                        for (int i = 0; i < saltArray.length; i++){
+                        for (int i = 0; i < 10; i++){
                             String saltedWord;
                             saltedWord = data + saltArray[i];
-
                             String hash = computeSha1(computeSha256(saltedWord));
                             for (int j = 0; j < 10; j++) {
                                 if (hash.equals(usernameHashCmp.get(UsernameArray[j]))) {
-                                    System.out.println("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i]);
-                                    myWriter.write("hash: " + hash + " username: " + UsernameArray[j] + "\tpwd: " + data + "\tsalt: " + saltArray[i] + "\n");
+                                    System.out.println("hash: " + hash + " username: " + UsernameArray[j] + "\tsalt: " + saltArray[i] + "\tpwd: " + data);
+                                    myWriter.write("hash: " + hash + " username: " + UsernameArray[j] + "\tsalt: " + saltArray[i] + "\tpwd: " + data + "\n");
                                 }
                             }
                         }
                     }
                     long endTime = System.nanoTime();
-                    System.out.println("Time taken: " + (endTime - startTime));
-                    myWriter.write("Time Taken: " + (endTime - startTime) + "\n");
+                    System.out.println("************************\n" + "Time taken: " + (endTime - startTime));
+                    myWriter.write("************************\n" + "Time Taken: " + (endTime - startTime) + "\n" + "************************\n");
                     break;
                 case 3:
                     break;
