@@ -1,0 +1,10 @@
+Rosendo Vasquez II
+Professor Acosta
+Software Vulnerabilities
+20 February 2022
+Exercise 3 Write-up
+The purpose of this lab was to use Dshell to decode packets we capture using Wireshark so we 
+can understand what the malware was doing when executed on the victim machine. I did struggle 
+towards the end when it came to using the decoder from the previous assignment, so I used the 
+rot13.py example provided to decode the packets. I did get a better grasp of how to use Dshell to 
+write my own decoders and as well how to read packets to decode from.
