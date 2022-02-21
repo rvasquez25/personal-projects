@@ -1,0 +1,11 @@
+Rosendo Vasquez II
+Software Vulnerabilities
+Professor Acosta
+17 February 2022
+Exercise 2 Write-up
+The purpose of this exercise was to uncover a RAT known as ArchDeus. To do this, we must use 
+Ghidra to analyze a DLL file we uncovered from the previous exercise. We can then look 
+through the code and decompiler to find the decoded communication string used by the author of 
+the malware and the code used to encode the code. We then use Netcat to establish a connection 
+with the C2-Server to decode the response. I learned how to use Ghidra to look and decompile 
+code and Netcat to connect to servers to test responses.
