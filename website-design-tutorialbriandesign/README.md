@@ -1,0 +1,1 @@
+Currently at 27:30 on vid https://www.youtube.com/watch?v=FazgJVnrVuI&ab_channel=BrianDesign
